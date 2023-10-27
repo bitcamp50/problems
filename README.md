@@ -1,6 +1,4 @@
-# Problems, exercises and projects for Bitcamp, supported with automated tests.
-
-## bitcamp50 - დავალებების შემოწმების ავტომატური სისტემა
+# bitcamp50 - დავალებების შემოწმების ავტომატური სისტემა
 
 აღნიშნული სისტემა დაფუძნებულია ჰარვარდის უნივერსიტეტის check50 & submit50 open-source პროექტებზე. [იხილეთ ვიდეო](https://www.youtube.com/watch?v=ipr-DgLhnTU)
 
