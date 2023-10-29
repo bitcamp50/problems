@@ -19,4 +19,4 @@ def testcs50():
 @check50.check(exists)
 def testnumber():
     """input of 50 yields output of 50"""
-    check50.run("python3 indoor.py").stdin("50", prompt=False).stdout("50").exit()
+    check50.run("python3 sayhello.py").stdin("50", prompt=False).stdout("50").exit()
