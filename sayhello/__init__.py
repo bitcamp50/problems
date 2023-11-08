@@ -14,9 +14,9 @@ def testoto():
 @check50.check(exists)
 def testgiorgi():
     """input of Giorgi yields output of 'Hello, Giorgi, nice to meet you!'"""
-    check50.run("python3 sayhello.py").stdin("Giorgi", prompt=False).stdout("Hello, Giorgi, nice to meet you!").exit()
+    check50.run("python3 sayhello.py").stdin("Giorgi", prompt=True).stdout("Hello, Giorgi, nice to meet you!").exit()
 
 @check50.check(exists)
 def testbitcamp():
     """input of Bitcamp yields output of 'Hello, Bitcamp, nice to meet you!'"""
-    check50.run("python3 sayhello.py").stdin("Bitcamp", prompt=False).stdout("Hello, Bitcamp, nice to meet you!").exit()
+    check50.run("python3 sayhello.py").stdin("Bitcamp", prompt=True).stdout("Hello, Bitcamp, nice to meet you!").exit()
