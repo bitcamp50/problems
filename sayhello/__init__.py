@@ -9,7 +9,7 @@ def exists():
 @check50.check(exists)
 def testoto():
     """input of Oto yields output of 'Hello, Oto, nice to meet you!'"""
-    check50.run("python3 sayhello.py").stdin("Oto", prompt=False).stdout("Hello, Oto, nice to meet you!").exit()
+    check50.run("python3 sayhello.py").stdin("Oto", prompt=True).stdout("Hello, Oto, nice to meet you!").exit()
 
 @check50.check(exists)
 def testgiorgi():
