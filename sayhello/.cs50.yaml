@@ -1,43 +1,9 @@
-# submit50:
-#   files: &submit50_files
-#     - !exclude "*"
-#     - !include "*.py"
-#     - !require sayhello.py
-#   style: false
-
-# check50:
-#   files: *submit50_files
-
-check50:
-  checks:
-    exists:
-      - run: python3 sayhello.py
-        exists: true
-
-    testhello:
-      - run: python3 sayhello.py
-        stdin: Oto
-        prompt: false
-        stdout: Hello, Oto, nice to meet you!
-        exit: 0
-
-    testcs50:
-      - run: python3 sayhello.py
-        stdin: Giorgi
-        prompt: false
-        stdout: Hello, Giorgi, nice to meet you!
-        exit: 0
-
-    testnumber:
-      - run: python3 sayhello.py
-        stdin: Bitcamp
-        prompt: false
-        stdout: Hello, Bitcamp, nice to meet you!
-        exit: 0
-
 submit50:
   files: &submit50_files
     - !exclude "*"
     - !include "*.py"
     - !require sayhello.py
   style: false
+
+check50:
+  files: *submit50_files
