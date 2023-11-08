@@ -3,20 +3,20 @@ import check50
 
 @check50.check()
 def exists():
-    """sayhello.py exists არსებობს"""
+    """sayhello.py exists"""
     check50.exists("sayhello.py")
 
 @check50.check(exists)
-def testhello():
-    """input of HELLO yields output of hello"""
-    check50.run("python3 sayhello.py").stdin("HELLO", prompt=False).stdout("hello").exit()
+def testoto():
+    """input of Oto yields output of 'Hello, Oto, nice to meet you!'"""
+    check50.run("python3 sayhello.py").stdin("Oto", prompt=False).stdout("Hello, Oto, nice to meet you!").exit()
 
 @check50.check(exists)
-def testcs50():
-    """პირველი სატესტო შეტყობინება ქართულად"""
-    check50.run("python3 sayhello.py").stdin("THIS IS CS50", prompt=False).stdout("this is cs50").exit()
+def testgiorgi():
+    """input of Giorgi yields output of 'Hello, Giorgi, nice to meet you!'"""
+    check50.run("python3 sayhello.py").stdin("Giorgi", prompt=False).stdout("Hello, Giorgi, nice to meet you!").exit()
 
 @check50.check(exists)
-def testnumber():
-    """input of 50 yields output of 50"""
-    check50.run("python3 sayhello.py").stdin("50", prompt=False).stdout("50").exit()
+def testbitcamp():
+    """input of Bitcamp yields output of 'Hello, Bitcamp, nice to meet you!'"""
+    check50.run("python3 sayhello.py").stdin("Bitcamp", prompt=False).stdout("Hello, Bitcamp, nice to meet you!").exit()
