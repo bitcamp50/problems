@@ -1,4 +1,5 @@
 import check50
+from re import escape
 
 @check50.check()
 def exists():
@@ -30,21 +31,27 @@ def test_different_story():
 @check50.check(exists)
 def test_edge_case_empty_input():
     """handles empty input for noun, verb, adjective, and adverb"""
+    expected_output = "Do you \s+ your \s+ \s+ \s+\? That's hilarious!"
     (check50.run("python3 madlib.py")
             .stdin("")
             .stdin("")
             .stdin("")
             .stdin("")
-            .stdout("Do you \s+ your \s+ \s+ \s+\? That's hilarious!", regex=True)
+            .stdout(regex(expected_output), expected_output, regex=True)
             .exit())
 
 @check50.check(exists)
 def test_numerical_input():
     """handles numerical input for noun, verb, adjective, and adverb"""
+    expected_output = "Do you 456 your 789 123 0\? That's hilarious!"
     (check50.run("python3 madlib.py")
             .stdin("123")
             .stdin("456")
             .stdin("789")
             .stdin("0")
-            .stdout("Do you 456 your 789 123 0\? That's hilarious!", regex=True)
+            .stdout(regex(expected_output), expected_output, regex=True)
             .exit())
+
+def regex(output):
+    """match case-insensitively with only whitespace on either side"""
+    return fr'^\s*{escape(output)}\s*$'
