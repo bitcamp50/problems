@@ -9,8 +9,8 @@ def exists():
 def test_valid_input():
     """correctly performs arithmetic operations with valid inputs"""
     (check50.run("python3 simple.py")
-            .stdin("10")
-            .stdin("5")
+            .stdin("10", prompt=True)
+            .stdin("5", prompt=True)
             .stdout("10 + 5 = 15\n10 - 5 = 5\n10 * 5 = 50\n10 / 5 = 2.0")
             .exit(0))
 
@@ -26,8 +26,8 @@ def test_zero_division():
 def test_negative_numbers():
     """correctly handles negative numbers"""
     (check50.run("python3 simple.py")
-            .stdin("6")
-            .stdin("3")
+            .stdin("6", prompt=True)
+            .stdin("3", prompt=True)
             .stdout("6 + 3 = 9\n6 - 3 = 3\n6 * 3 = 18\n6 / 3 = 2.0")
             .exit(0))
 
