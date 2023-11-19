@@ -31,7 +31,7 @@ def test_different_story():
 @check50.check(exists)
 def test_edge_case_empty_input():
     """handles empty input for noun, verb, adjective, and adverb"""
-    expected_output = "Do you \s+ your \s+ \s+ \s+\? That's hilarious!"
+    expected_output = r"Do you \s+ your \s+ \s+ \s+\? That's hilarious!"
     (check50.run("python3 madlib.py")
             .stdin("")
             .stdin("")
@@ -43,7 +43,7 @@ def test_edge_case_empty_input():
 @check50.check(exists)
 def test_numerical_input():
     """handles numerical input for noun, verb, adjective, and adverb"""
-    expected_output = "Do you 456 your 789 123 0\? That's hilarious!"
+    expected_output = r"Do you 456 your 789 123 0\? That's hilarious!"
     (check50.run("python3 madlib.py")
             .stdin("123")
             .stdin("456")
