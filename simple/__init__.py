@@ -21,7 +21,7 @@ def test_zero_division():
             .stdin("10")
             .stdin("0")
             .stdout("", regex=False)
-            .exit(0))
+            .exit(1))
 
 @check50.check(exists)
 def test_negative_numbers():
