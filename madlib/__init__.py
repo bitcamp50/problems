@@ -37,7 +37,7 @@ def test_edge_case_empty_input():
             .stdin("")
             .stdin("")
             .stdin("")
-            .stdout(regex(expected_output), expected_output, regex=True)
+            .stdout(expected_output, regex=True)
             .exit())
 
 @check50.check(exists)
@@ -49,7 +49,7 @@ def test_numerical_input():
             .stdin("456")
             .stdin("789")
             .stdin("0")
-            .stdout(regex(expected_output), expected_output, regex=True)
+            .stdout(expected_output, regex=True)
             .exit())
 
 def regex(output):
