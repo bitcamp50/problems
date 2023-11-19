@@ -26,9 +26,9 @@ def test_zero_division():
 def test_negative_numbers():
     """correctly handles negative numbers"""
     (check50.run("python3 simple.py")
-            .stdin("-5")
+            .stdin("-6")
             .stdin("3")
-            .stdout("-5 + 3 = -2\n-5 - 3 = -8\n-5 * 3 = -15\n-5 / 3 = -1.6666666666666667")
+            .stdout("-6 + 3 = -3\n-6 - 3 = -9\n-6 * 3 = -18\n-6 / 3 = -2")
             .exit(0))
 
 @check50.check(exists)
