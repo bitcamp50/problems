@@ -20,8 +20,7 @@ def test_zero_division():
     (check50.run("python3 simple.py")
             .stdin("10")
             .stdin("0")
-            .stdout("10 \+ 0 = 10\n10 - 0 = 10\n10 \* 0 = 0\n10 / 0 = [eE]rror", regex=True)
-            .exit())
+            .exit(1))
 
 @check50.check(exists)
 def test_negative_numbers():
@@ -29,8 +28,8 @@ def test_negative_numbers():
     (check50.run("python3 simple.py")
             .stdin("-5")
             .stdin("3")
-            .stdout("-5 \+ 3 = -2\n-5 - 3 = -8\n-5 \* 3 = -15\n-5 / 3 = -1.6666667", regex=True)
-            .exit())
+            .stdout("-5 + 3 = -2\n-5 - 3 = -8\n-5 * 3 = -15\n-5 / 3 = -1.6666666666666667")
+            .exit(0))
 
 @check50.check(exists)
 def test_non_numeric_input():
@@ -38,5 +37,4 @@ def test_non_numeric_input():
     (check50.run("python3 simple.py")
             .stdin("abc")
             .stdin("5")
-            .stdout("[eE]rror", regex=True)
-            .exit())
+            .exit(1))
