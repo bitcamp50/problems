@@ -15,7 +15,7 @@ def test_basic_story():
             .stdin("blue")
             .stdin("quickly")
             .stdout("Do you walk your blue dog quickly\? That's hilarious!")
-            .exit())
+            .exit(0))
 
 @check50.check(exists)
 def test_different_story():
@@ -26,7 +26,7 @@ def test_different_story():
             .stdin("green")
             .stdin("slowly")
             .stdout("Do you jump your green cat slowly\? That's hilarious!")
-            .exit())
+            .exit(0))
 
 @check50.check(exists)
 def test_edge_case_empty_input():
@@ -38,7 +38,7 @@ def test_edge_case_empty_input():
             .stdin("")
             .stdin("")
             .stdout(expected_output, regex=True)
-            .exit())
+            .exit(0))
 
 @check50.check(exists)
 def test_numerical_input():
@@ -50,7 +50,7 @@ def test_numerical_input():
             .stdin("789")
             .stdin("0")
             .stdout(expected_output, regex=True)
-            .exit())
+            .exit(0))
 
 def regex(output):
     """match case-insensitively with only whitespace on either side"""
