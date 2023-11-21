@@ -11,7 +11,7 @@ def test_valid_input():
     (check50.run("python3 simple.py")
             .stdin("10")
             .stdin("5")
-            .stdout("10 \+ 5 = 15\n10 - 5 = 5\n10 \* 5 = 50\n10 / 5 = 2.0")
+            .stdout("10 + 5 = 15\n10 - 5 = 5\n10 * 5 = 50\n10 / 5 = 2.0")
             .exit(0))
 
 @check50.check(exists)
@@ -29,7 +29,7 @@ def test_negative_numbers():
     (check50.run("python3 simple.py")
             .stdin("6")
             .stdin("3")
-            .stdout("6 \+ 3 = 9\n6 - 3 = 3\n6 \* 3 = 18\n6 / 3 = 2.0")
+            .stdout("6 + 3 = 9\n6 - 3 = 3\n6 * 3 = 18\n6 / 3 = 2.0")
             .exit(0))
 
 @check50.check(exists)
