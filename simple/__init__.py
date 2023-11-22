@@ -29,7 +29,7 @@ def test_negative_numbers():
     (check50.run("python3 simple.py")
             .stdin("6")
             .stdin("3")
-            .stdout(r"6 + 3 = 9\n6 - 3 = 3\n6 * 3 = 18\n6 / 3 = 2.0")
+            .stdout("6 + 3 = 9\n6 - 3 = 3\n6 * 3 = 18\n6 / 3 = 2.0",regex=False)
             .exit(0))
 
 @check50.check(exists)
