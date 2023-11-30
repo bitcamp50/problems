@@ -14,7 +14,7 @@ def test_basic_story():
             .stdin("walk")
             .stdin("blue")
             .stdin("quickly")
-            .stdout("Do you walk your blue dog quickly\? That's hilarious!")
+            .stdout("Do you walk your blue dog quickly? That's hilarious!", regex=False)
             .exit(0))
 
 @check50.check(exists)
@@ -25,7 +25,7 @@ def test_different_story():
             .stdin("jump")
             .stdin("green")
             .stdin("slowly")
-            .stdout("Do you jump your green cat slowly\? That's hilarious!")
+            .stdout("Do you jump your green cat slowly? That's hilarious!", regex=False)
             .exit(0))
 
 @check50.check(exists)
