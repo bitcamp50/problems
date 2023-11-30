@@ -14,7 +14,7 @@ def test_basic_story():
             .stdin("walk")
             .stdin("blue")
             .stdin("quickly")
-            .stdout("Do you walk your blue dog quickly? That's hilarious!")
+            .stdout("Do you walk your blue dog quickly\? That's hilarious!")
             .exit(0))
 
 @check50.check(exists)
@@ -25,13 +25,13 @@ def test_different_story():
             .stdin("jump")
             .stdin("green")
             .stdin("slowly")
-            .stdout("Do you jump your green cat slowly? That's hilarious!")
+            .stdout("Do you jump your green cat slowly\? That's hilarious!")
             .exit(0))
 
 @check50.check(exists)
 def test_edge_case_empty_input():
     """handles empty input for noun, verb, adjective, and adverb"""
-    expected_output = r"Do you  your    ? That's hilarious!"
+    expected_output = r"Do you\s*your\s*\s*\s*\? That's hilarious!"
     (check50.run("python3 madlib.py")
             .stdin("")
             .stdin("")
@@ -43,7 +43,7 @@ def test_edge_case_empty_input():
 @check50.check(exists)
 def test_numerical_input():
     """handles numerical input for noun, verb, adjective, and adverb"""
-    expected_output = r"Do you 456 your 789 123 0? That's hilarious!"
+    expected_output = r"Do you 456 your 789 123 0\? That's hilarious!"
     (check50.run("python3 madlib.py")
             .stdin("123")
             .stdin("456")
