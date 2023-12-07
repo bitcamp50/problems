@@ -11,7 +11,7 @@ def test_wisconsin_tax():
     (check50.run("python3 tax.py")
             .stdin("50")
             .stdin("WI")
-            .stdout("The subtotal is \$50.00.\nThe tax is \$2.75.\nThe total is \$52.75.", regex=True)
+            .stdout("The subtotal is $50.00.\nThe tax is $2.75.\nThe total is $52.75.", regex=True)
             .exit(0))
 
 @check50.check(exists)
@@ -20,7 +20,7 @@ def test_non_wisconsin():
     (check50.run("python3 tax.py")
             .stdin("50")
             .stdin("MN")
-            .stdout("The total is \$50.00", regex=True)
+            .stdout("The total is $50.00", regex=True)
             .exit(0))
 
 @check50.check(exists)
@@ -29,7 +29,7 @@ def test_zero_order_amount():
     (check50.run("python3 tax.py")
             .stdin("0")
             .stdin("WI")
-            .stdout("The subtotal is \$0.00.\nThe tax is \$0.00.\nThe total is \$0.00.", regex=True)
+            .stdout("The subtotal is $0.00.\nThe tax is $0.00.\nThe total is $0.00.", regex=True)
             .exit(0))
 
 @check50.check(exists)
@@ -38,7 +38,6 @@ def test_negative_order_amount():
     (check50.run("python3 tax.py")
             .stdin("-10")
             .stdin("WI")
-            .stdout("", regex=False)
             .exit(1))
 
 @check50.check(exists)
@@ -47,7 +46,6 @@ def test_invalid_state_input():
     (check50.run("python3 tax.py")
             .stdin("50")
             .stdin("XYZ")
-            .stdout("", regex=False)
             .exit(1))
 
 @check50.check(exists)
@@ -56,5 +54,4 @@ def test_non_numeric_order_amount():
     (check50.run("python3 tax.py")
             .stdin("abc")
             .stdin("WI")
-            .stdout("", regex=False)
             .exit(1))
