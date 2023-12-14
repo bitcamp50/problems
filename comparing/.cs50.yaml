@@ -1,0 +1,10 @@
+.cs50.yaml:
+submit50:
+  files: &submit50_files
+    - !exclude "*"
+    - !include "*.py"
+    - !require comparing.py
+  style: false
+
+check50:
+  files: *submit50_files
