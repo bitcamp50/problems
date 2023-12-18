@@ -35,7 +35,7 @@ def test_edge_case():
     (check50.run("python3 legal.py")
             .stdin("15.9")
             .stdout("You are not old enough to legally drive.", regex=False)
-            .exit(0))
+            .exit(1))
 
 @check50.check(exists)
 def test_non_numeric_input():
