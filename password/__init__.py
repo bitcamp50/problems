@@ -9,7 +9,7 @@ def exists():
 def test_correct_password():
     """validates correct password"""
     (check50.run("python3 password.py")
-            .stdin("abc$123")
+            .stdin("abc$123", prompt=True)
             .stdout("Welcome!", regex=False)
             .exit(0))
 
@@ -17,7 +17,7 @@ def test_correct_password():
 def test_incorrect_password():
     """rejects incorrect password"""
     (check50.run("python3 password.py")
-            .stdin("12345")
+            .stdin("12345", prompt=True)
             .stdout("I don't know you.", regex=False)
             .exit(0))
 
@@ -25,7 +25,7 @@ def test_incorrect_password():
 def test_case_sensitivity():
     """ensures password validation is case sensitive"""
     (check50.run("python3 password.py")
-            .stdin("ABC$123")
+            .stdin("ABC$123", prompt=True)
             .stdout("I don't know you.", regex=False)
             .exit(0))
 
