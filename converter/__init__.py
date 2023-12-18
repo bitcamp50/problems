@@ -55,4 +55,4 @@ def test_non_numeric_temperature():
     (check50.run("python3 converter.py")
             .stdin("C")
             .stdin("abc")
-            .exit(0))
+            .exit(1))
