@@ -32,6 +32,7 @@ def test_duplicate_numbers():
             .stdin("5")
             .stdin("5")
             .stdin("10")
+            .stdout("", regex=False)
             .exit(1))
 
 @check50.check(exists)
@@ -41,6 +42,7 @@ def test_all_numbers_same():
             .stdin("7")
             .stdin("7")
             .stdin("7")
+            .stdout("", regex=False)
             .exit(1))
 
 @check50.check(exists)
