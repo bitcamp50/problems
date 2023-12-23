@@ -48,6 +48,4 @@ def test_non_numeric_input():
     """handles non-numeric input"""
     (check50.run("python3 comparing.py")
             .stdin("abc")
-            .stdin("10")
-            .stdin("20")
             .exit(1))
