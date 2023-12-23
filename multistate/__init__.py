@@ -7,7 +7,7 @@ def exists():
 
 @check50.check(exists)
 def test_wisconsin_eau_claire():
-    """correctly calculates tax for Wisconsin Eau Claire county"""
+    """calculates tax correctly for Wisconsin Eau Claire county"""
     (check50.run("python3 multistate.py")
             .stdin("10")
             .stdin("Wisconsin")
@@ -17,7 +17,7 @@ def test_wisconsin_eau_claire():
 
 @check50.check(exists)
 def test_wisconsin_dunn():
-    """correctly calculates tax for Wisconsin Dunn county"""
+    """calculates tax correctly for Wisconsin Dunn county"""
     (check50.run("python3 multistate.py")
             .stdin("10")
             .stdin("Wisconsin")
@@ -27,7 +27,7 @@ def test_wisconsin_dunn():
 
 @check50.check(exists)
 def test_illinois():
-    """correctly calculates tax for Illinois residents"""
+    """calculates tax correctly for Illinois residents"""
     (check50.run("python3 multistate.py")
             .stdin("10")
             .stdin("Illinois")
@@ -35,8 +35,8 @@ def test_illinois():
             .exit(0))
 
 @check50.check(exists)
-def test_other_state():
-    """correctly handles states with no tax"""
+def test_other_states():
+    """no tax for residents of other states"""
     (check50.run("python3 multistate.py")
             .stdin("10")
             .stdin("California")
@@ -44,17 +44,8 @@ def test_other_state():
             .exit(0))
 
 @check50.check(exists)
-def test_invalid_input():
-    """handles invalid state input"""
-    (check50.run("python3 multistate.py")
-            .stdin("10")
-            .stdin("Atlantis")
-            .exit(1))
-
-@check50.check(exists)
 def test_non_numeric_order_amount():
     """handles non-numeric order amount"""
     (check50.run("python3 multistate.py")
             .stdin("abc")
-            .stdin("Wisconsin")
             .exit(1))
