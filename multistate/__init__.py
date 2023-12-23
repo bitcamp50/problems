@@ -12,7 +12,7 @@ def test_wisconsin_eau_claire():
             .stdin("10")
             .stdin("Wisconsin")
             .stdin("Eau Claire")
-            .stdout("The tax is $0.55.\nThe total is $10.55.", regex=False)
+            .stdout("The tax is $0.50.\nThe total is $10.50.", regex=False)
             .exit(0))
 
 @check50.check(exists)
@@ -22,7 +22,7 @@ def test_wisconsin_dunn():
             .stdin("10")
             .stdin("Wisconsin")
             .stdin("Dunn")
-            .stdout("The tax is $0.54.\nThe total is $10.54.", regex=False)
+            .stdout("The tax is $0.50.\nThe total is $10.50.", regex=False)
             .exit(0))
 
 @check50.check(exists)
