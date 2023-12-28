@@ -3,4 +3,4 @@ check50:
     - !exclude "*"
     - !require "hello.js"
   dependencies:
-    - "git+https://github.com/cs50/check50_js.git#egg=check50_js"
+    - "git+https://github.com/bitcamp50/bitcamp50js"
