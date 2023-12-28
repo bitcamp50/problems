@@ -1,5 +1,5 @@
 import check50
-import check50_js as js
+import check50_custom_js as custom_js
 
 @check50.check()
 def exists():
@@ -8,11 +8,12 @@ def exists():
 
 @check50.check(exists)
 def prints_hello():
-    """prints "hello, world\\n" """
+    """prints "hello, world\n" """
     from re import match
 
-    with js.capture_stdout() as stdout:
-        js.interface("hello.js")
+    # Using the custom_js interface to execute the JavaScript file
+    with custom_js.capture_stdout() as stdout:
+        custom_js.interface("hello.js")
 
     actual = stdout.getvalue()
     expected = "[Hh]ello, world!?\n"
