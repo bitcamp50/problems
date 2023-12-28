@@ -1,9 +1,6 @@
-submit50:
-  files: &submit50_files
-    - !exclude "*"
-    - !include "*.py"
-    - !require sayhello.py
-  style: false
-
 check50:
-  files: *submit50_files
+  files:
+    - !exclude "*"
+    - !require "sayhello.js"
+  dependencies:
+    - "git+https://github.com/bitcamp50/bitcamp50js"

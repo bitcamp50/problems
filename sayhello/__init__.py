@@ -1,22 +1,26 @@
 import check50
-
+import check50_custom_js as custom_js
 
 @check50.check()
 def exists():
-    """sayhello.py exists"""
-    check50.exists("sayhello.py")
+    """sayhello.js exists"""
+    check50.exists("sayhello.js")
 
 @check50.check(exists)
-def testoto():
-    """input of Oto yields output of 'Hello, Oto, nice to meet you!'"""
-    check50.run("python3 sayhello.py").stdin("Oto", prompt=True).stdout("Hello, Oto, nice to meet you!").exit()
+def function_defined():
+    """Function 'createGreeting' is defined"""
+    with custom_js.capture_stdout():
+        inter = custom_js.interface("sayhello.js")
+    custom_js.function_exists("createGreeting", inter)
 
-@check50.check(exists)
-def testgiorgi():
-    """input of Giorgi yields output of 'Hello, Giorgi, nice to meet you!'"""
-    check50.run("python3 sayhello.py").stdin("Giorgi", prompt=True).stdout("Hello, Giorgi, nice to meet you!").exit()
+@check50.check(function_defined)
+def greets_by_name():
+    """Program greets by name"""
+    test_greeting("Alice", "Hello, Alice, nice to meet you!")
+    test_greeting("Brian", "Hello, Brian, nice to meet you!")
 
-@check50.check(exists)
-def testbitcamp():
-    """input of Bitcamp yields output of 'Hello, Bitcamp, nice to meet you!'"""
-    check50.run("python3 sayhello.py").stdin("Bitcamp", prompt=True).stdout("Hello, Bitcamp, nice to meet you!").exit()
+def test_greeting(name, expected):
+    inter = custom_js.interface("sayhello.js")
+    result = inter.call("createGreeting", name).strip()
+    if result != expected:
+        raise check50.Mismatch(expected, result)
