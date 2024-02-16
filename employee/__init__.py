@@ -13,7 +13,7 @@ def test_remove_employee():
 @check50.check(exists)
 def test_remove_nonexistent_employee():
     """handles attempts to remove a nonexistent employee"""
-    check50.run("python3 employee.py").stdout("There are 5 employees:").stdin("Nonexistent Employee").stdout("There are 5 employees:").exit(0)
+    check50.run("python3 employee.py").stdout("There are 5 employees:").stdin("Giorgi").stdout("Employee Giorgi not found in the list.").exit(0)
 
 @check50.check(exists)
 def test_remove_all_employees():
