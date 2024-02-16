@@ -23,4 +23,4 @@ def test_sum_five_zeros():
 @check50.check(exists)
 def test_non_numeric_input():
     """handles non-numeric input"""
-    check50.run("python3 adding.py").stdin("abc").stdin("1").stdin("2").stdin("3").stdin("4").stdout("", regex=False).exit(0)
+    check50.run("python3 adding.py").stdin("abc").exit(1)
