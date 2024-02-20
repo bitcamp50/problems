@@ -14,6 +14,5 @@ def test_valid_input():
             .stdin("8")
             .stdin("2")
             .stdin("2")
-            .stdout(re.match(r"Your password is [a-zA-Z0-9$@!#%&*]+", output), regex=True)
+            .stdout(re.compile(r"Your password is [a-zA-Z0-9$@!#%&*]+").search(output), regex=True)
             .exit(0))
-
