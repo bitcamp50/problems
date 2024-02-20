@@ -9,7 +9,7 @@ def exists():
 @check50.check(exists)
 def test_valid_input():
     """validates correct password"""
-    output = check50.run("python password_generator.py").stdin("8").stdin("2").stdin("2").stdout()
+    output = check50.run("python passgen.py").stdin("8").stdin("2").stdin("2").stdout()
     (check50.run("python3 passgen.py")
             .stdin("8")
             .stdin("2")
