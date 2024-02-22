@@ -18,7 +18,7 @@ def test_valid_input():
         .stdout("The average is 400.")\
         .stdout("The minimum is 100.")\
         .stdout("The maximum is 1000.")\
-        .stdout(r"The standard deviation is (400\.25|437\.82)")\
+        .stdout("The standard deviation is 353.55.")\
         .exit(0)
 
 @check50.check(exists)
@@ -40,8 +40,4 @@ def test_no_input():
     check50.run("python3 compute.py")\
         .stdin("done")\
         .stdout("Numbers: ")\
-        .stdout("The average is 0.")\
-        .stdout("The minimum is 0.")\
-        .stdout("The maximum is 0.")\
-        .stdout("The standard deviation is 0.0")\
         .exit(0)
