@@ -3,14 +3,14 @@ import re
 
 @check50.check()
 def exists():
-    """stats.py exists"""
-    check50.exists("stats.py")
+    """compute.py exists"""
+    check50.exists("compute.py")
 
 @check50.check(exists)
 def test_fixed_set():
     """calculates stats correctly for a fixed set of numbers"""
     input_numbers = ["100", "200", "1000", "300"]
-    output = (check50.run("python3 stats.py")
+    output = (check50.run("python3 compute.py")
               .stdin("100").stdin("200").stdin("1000").stdin("300").stdin("done")
               .stdout())
     # Verify the output contains the numbers
@@ -21,7 +21,7 @@ def test_fixed_set():
 def test_single_number():
     """calculates stats correctly for a single number"""
     input_numbers = ["500"]
-    output = (check50.run("python3 stats.py")
+    output = (check50.run("python3 compute.py")
               .stdin("500").stdin("done")
               .stdout())
     # When there's only one number, the std deviation is 0
@@ -32,7 +32,7 @@ def test_single_number():
 def test_two_numbers():
     """calculates stats correctly for two numbers"""
     input_numbers = ["100", "400"]
-    output = (check50.run("python3 stats.py")
+    output = (check50.run("python3 compute.py")
               .stdin("100").stdin("400").stdin("done")
               .stdout())
     # Verify output for two numbers
