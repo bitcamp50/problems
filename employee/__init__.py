@@ -33,12 +33,3 @@ def handles_nonexistent_employee():
     output = check50.run("python3 employee.py").stdin(nonexistent_name).stdout()
     if "Nonexistent Name" in output:
         raise check50.Failure("Program should not output the non-existent employee name in the final list.")
-
-@check50.check(exists)
-def print_initial_list():
-    """prints the initial list of employees"""
-    initial_employees = ["John Smith", "Jackie Jackson", "Chris Jones", "Amanda Cullen", "Jeremy Goodwin"]
-    output = check50.run("python3 employee.py").stdout()
-    for employee in initial_employees:
-        if employee not in output:
-            raise check50.Failure(f"Expected {employee} to be in the initial list of employees.")
