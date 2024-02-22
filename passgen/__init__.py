@@ -19,4 +19,4 @@ def test_valid_input():
     
 def test_regex(txt, n1,n2,n3):
     pattern = re.compile(fr'^(?=.*\d{{{n1}}})(?=.*[\W_]{{{n2}}})[A-Za-z\d\W_]{{{n3}}}$')
-    return pattern.match(txt)
+    return pattern
