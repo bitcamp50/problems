@@ -2,7 +2,7 @@ submit50:
   files: &submit50_files
     - !exclude "*"
     - !include "*.py"
-    - !require "sortrecords".py"
+    - !require sortrecords.py
   style: false
 
 check50:
