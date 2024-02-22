@@ -1,6 +1,7 @@
 import check50
 import re
 import string
+import random
 
 @check50.check()
 def exists():
@@ -13,12 +14,16 @@ def test_valid_input():
     n1 = '2'
     n2 = '2'
     n3 = '8'
-    text = "12#Abcde"
-    expected_output = test_regex(text, n1, n2, n3)
-    first_run = check50.run("python passgen.py").stdin(n3).stdin(n2).stdin(n1).stdout().exit()
-    if expected_output:
-        check50.run("python passgen.py").stdin(n3).stdin(n2).stdin(n1).stdout(first_run).exit()
-    
-def test_regex(txt, n1,n2,n3):
-    pattern = re.compile(fr'^Your password is\n(?=.*\d{{{int(n1)}}})(?=.*[\W_]{{{int(n2)}}})[A-Za-z\d\W_]{{{int(n3)}}}$')
-    return pattern.match(txt)
+    pattern = re.compile(fr'^(?=.*\d{{{int(n1)}}})(?=.*[\W_]{{{int(n2)}}})[A-Za-z\d\W_]{{{int(n3)}}}$')
+
+    # Generate a random password
+    password = ''.join(random.choices(string.ascii_letters + string.digits + string.punctuation, k=int(n3)))
+
+    # Check if the generated password matches the specified pattern
+    if pattern.match(password):
+        expected_output = f"Your password is\n{password}"
+    else:
+        expected_output = None
+
+    # Run the program and validate the output
+    check50.run("python passgen.py").stdin(n3).stdin(n2).stdin(n1).stdout(expected_output, regex=True).exit()
