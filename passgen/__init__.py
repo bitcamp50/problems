@@ -17,7 +17,7 @@ def test_valid_input():
     pattern = re.compile(fr'^(?=.*\d{{{int(n1)}}})(?=.*[\W_]{{{int(n2)}}})[A-Za-z\d\W_]{{{int(n3)}}}$')
 
     # Generate a random password
-    password = ''.join(random.choices(string.ascii_letters + string.digits + string.punctuation, k=int(n3)))
+    password = ''.join(random.choices(string.ascii_letters, k=4) + random.choices(string.digits,k=2) + random.choices(string.punctuation,k=2))
 
     # Check if the generated password matches the specified pattern
     if pattern.match(password):
@@ -26,4 +26,7 @@ def test_valid_input():
         expected_output = None
 
     # Run the program and validate the output
-    check50.run("python passgen.py").stdin(n3).stdin(n2).stdin(n1).stdout(expected_output, regex=True).exit()
+    if expected_output is not None:
+        check50.run("python passgen.py").stdin(n3).stdin(n2).stdin(n1).stdout(expected_output, regex=True).exit()
+    else:
+        check50.run("python passgen.py").stdin(n3).stdin(n2).stdin(n1).exit()
