@@ -1,8 +1,9 @@
+.cs50.yaml:
 submit50:
   files: &submit50_files
     - !exclude "*"
     - !include "*.py"
-    - !require "valuefilter.py"
+    - !require valuefilter.py
   style: false
 
 check50:
