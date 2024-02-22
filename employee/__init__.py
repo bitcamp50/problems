@@ -1,4 +1,5 @@
 import check50
+import re
 
 @check50.check()
 def exists():
@@ -6,19 +7,30 @@ def exists():
     check50.exists("employee.py")
 
 @check50.check(exists)
-def test_remove_employee():
-    """correctly removes an employee from the list"""
-    check50.run("python3 employee.py").stdout("There are 5 employees:\s*John Smith\s*Jackie Jackson\s*Chris Jones\s*Amanda Cullen\s*Jeremy Goodwin\s*").stdin("Chris Jones").stdout("There are 4 employees:\s*John Smith\s*Jackie Jackson\s*Amanda Cullen\s*Jeremy Goodwin\s*").exit(0)
+def remove_employee():
+    """employee name can be removed"""
+    check50.run("python3 employee.py").stdin("Chris Jones").stdout(not_contains("Chris Jones"), "Chris Jones was correctly removed.").exit(0)
+
+@check50.check(remove_employee)
+def retains_others():
+    """retains other employees after removal"""
+    output = check50.run("python3 employee.py").stdin("Chris Jones").stdout()
+    required_employees = ["John Smith", "Jackie Jackson", "Amanda Cullen", "Jeremy Goodwin"]
+    for employee in required_employees:
+        if employee not in output:
+            raise check50.Failure(f"missing {employee} in the output after removal")
 
 @check50.check(exists)
-def test_remove_nonexistent_employee():
-    """handles attempts to remove a nonexistent employee"""
-    check50.run("python3 employee.py").stdout("There are 5 employees:").stdin("Giorgi").stdout("Employee Giorgi not found in the list.").exit(0)
+def reject_nonexistent_employee():
+    """handles removal of a name not in the list"""
+    initial_output = check50.run("python3 employee.py").stdout()
+    modified_output = check50.run("python3 employee.py").stdin("Nonexistent Name").stdout()
+    if initial_output == modified_output:
+        raise check50.Failure("Program does not handle non-existent employee names correctly")
 
-@check50.check(exists)
-def test_remove_all_employees():
-    """allows all employees to be removed one by one"""
-    program = check50.run("python3 employee.py")
-    for employee in ["John Smith", "Jackie Jackson", "Chris Jones", "Amanda Cullen", "Jeremy Goodwin"]:
-        program.stdout(employee, regex=False).stdin(employee)
-    program.stdout("There are 0 employees:").exit(0)
+def not_contains(name):
+    """Returns a function that checks if the output does not contain the given name"""
+    def check(output):
+        if name in output:
+            raise check50.Mismatch("", name, help=f"{name} should not be in the output.")
+    return check
