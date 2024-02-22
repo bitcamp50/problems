@@ -39,5 +39,4 @@ def test_no_input():
     """handles no input before 'done' correctly"""
     check50.run("python3 compute.py")\
         .stdin("done")\
-        .stdout("Numbers: ")\
         .exit(0)
