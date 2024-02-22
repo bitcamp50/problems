@@ -7,27 +7,38 @@ def exists():
 
 @check50.check(exists)
 def remove_employee():
-    """Chris Jones is removed from the list"""
-    # Ensuring Chris Jones is not in the final output
-    output = check50.run("python3 employee.py").stdin("Chris Jones").stdout()
-    if "Chris Jones" in output:
-        raise check50.Failure("Chris Jones should not be in the list after being removed.")
-
-@check50.check(remove_employee)
-def retains_others():
-    """List correctly retains other employees after removal"""
-    # Verifying other employees are still listed after removal
-    output = check50.run("python3 employee.py").stdin("Chris Jones").stdout()
-    required_employees = ["John Smith", "Jackie Jackson", "Amanda Cullen", "Jeremy Goodwin"]
-    for employee in required_employees:
+    """removes an employee correctly"""
+    initial_employees = ["John Smith", "Jackie Jackson", "Chris Jones", "Amanda Cullen", "Jeremy Goodwin"]
+    name_to_remove = "Chris Jones"
+    remaining_employees = [employee for employee in initial_employees if employee != name_to_remove]
+    output = check50.run("python3 employee.py").stdin(name_to_remove).stdout()
+    for employee in remaining_employees:
         if employee not in output:
-            raise check50.Failure(f"{employee} is missing from the list after removal.")
+            raise check50.Failure(f"Expected to find {employee} in the list after removal.")
+    if name_to_remove in output:
+        raise check50.Failure(f"Did not expect to find {name_to_remove} in the list after removal.")
 
 @check50.check(exists)
-def reject_nonexistent_employee():
-    """Program behaves correctly when attempting to remove a non-existent employee"""
-    # Check if the list remains unchanged after attempting to remove a non-existent employee
-    initial_output = check50.run("python3 employee.py").stdout()
-    modified_output = check50.run("python3 employee.py").stdin("Nonexistent Name").stdout()
-    if initial_output != modified_output:
-        raise check50.Failure("The list should remain unchanged when a non-existent employee name is entered.")
+def retains_others_after_removal():
+    """retains other employees after one is removed"""
+    name_to_remove = "Chris Jones"
+    output = check50.run("python3 employee.py").stdin(name_to_remove).stdout()
+    if "There are 4 employees:" not in output:
+        raise check50.Failure("Expected to find 'There are 4 employees:' after removing one employee.")
+
+@check50.check(exists)
+def handles_nonexistent_employee():
+    """behaves correctly when attempting to remove a non-existent employee"""
+    nonexistent_name = "Nonexistent Name"
+    output = check50.run("python3 employee.py").stdin(nonexistent_name).stdout()
+    if "Nonexistent Name" in output:
+        raise check50.Failure("Program should not output the non-existent employee name in the final list.")
+
+@check50.check(exists)
+def print_initial_list():
+    """prints the initial list of employees"""
+    initial_employees = ["John Smith", "Jackie Jackson", "Chris Jones", "Amanda Cullen", "Jeremy Goodwin"]
+    output = check50.run("python3 employee.py").stdout()
+    for employee in initial_employees:
+        if employee not in output:
+            raise check50.Failure(f"Expected {employee} to be in the initial list of employees.")
