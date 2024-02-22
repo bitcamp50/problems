@@ -18,7 +18,7 @@ def test_valid_input():
 
     # Generate a random password
     password = ''.join(random.choices(string.ascii_letters, k=4) + random.choices(string.digits,k=2) + random.choices(string.punctuation,k=2))
-
+    random.seed(42)
     # Check if the generated password matches the specified pattern
     if pattern.match(password):
         expected_output = f"Your password is\n{password}"
