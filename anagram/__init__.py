@@ -47,5 +47,5 @@ def test_case_insensitive():
     check50.run("python3 anagram.py")\
         .stdin("Tone")\
         .stdin("Note")\
-        .stdout("\"Tone\" and \"Note\" are anagrams.", regex=True)\
+        .stdout("\"tone\" and \"note\" are anagrams.", regex=True)\
         .exit(0)
