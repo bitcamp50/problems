@@ -53,11 +53,11 @@ def test_play_again_yes_then_no():
         .stdin("1")\
         .stdin("5", prompt=True)\
         .stdout("You got it in 1 guess!", regex=True)\
-        .stdin("y")\
+        .stdin("y", prompt=True)\
         .stdin("1")\
         .stdin("5", prompt=True)\
         .stdout("You got it in 1 guess!", regex=True)\
-        .stdin("n")\
+        .stdin("n", prompt=True)\
         .stdout("Goodbye!", regex=True)\
         .exit(0)
 
