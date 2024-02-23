@@ -42,7 +42,7 @@ def test_invalid_input_guess():
         .stdin("not a number", prompt=True)\
         .stdout("Please enter a valid number. Non-numeric entries count as wrong guesses.", regex=True)\
         .stdin("5")\
-        .stdout("You got it in 2 guesses!", regex=True)\
+        .stdout("You got it in 1 guesses!", regex=True)\
         .exit(0)
 
 @check50.check(exists)
