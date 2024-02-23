@@ -57,7 +57,7 @@ def test_valid_input():
         .stdin("James")\
         .stdin("55555")\
         .stdin("TK-421")\
-        .stdout(".*There were no errors found.", regex=True)\
+        .stdout(".*TK-421 is not a valid ID.", regex=True)\
         .exit(0)
 
 @check50.check(exists)
