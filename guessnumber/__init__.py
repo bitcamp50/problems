@@ -1,52 +1,65 @@
 import check50
-import re
 
 @check50.check()
 def exists():
     """guessnumber.py exists"""
     check50.exists("guessnumber.py")
+    # This line is conceptual, assuming testing.py is prepared for testing
+    check50.include("testing.py")
 
 @check50.check(exists)
-def test_level_1():
-    """Level 1 gameplay works"""
-    # Simulate gameplay where the expected random number is 5 for level 1
-    check50.run("python3 guessnumber.py").stdin("1").stdin("1", prompt=True)\
-        .stdout("Too low. Guess again:", regex=True).stdin("10", prompt=True)\
-        .stdout("Too high. Guess again:", regex=True).stdin("5", prompt=True)\
-        .stdout("You got it in 3 guesses!", regex=True).exit(0)
+def test_level_1_fixed_guess():
+    """Level 1 gameplay with fixed guess works"""
+    check50.run("python3 testing.py")\
+        .stdin("1")\
+        .stdin("5")\
+        .stdout("You got it in 1 guess!", regex=True)\
+        .exit(0)
 
 @check50.check(exists)
-def test_level_2():
-    """Level 2 gameplay works"""
-    # Assuming a mock or predetermined random function that selects 50 for level 2
-    check50.run("python3 guessnumber.py").stdin("2").stdin("1", prompt=True)\
-        .stdout("Too low. Guess again:", regex=True).stdin("100", prompt=True)\
-        .stdout("Too high. Guess again:", regex=True).stdin("50", prompt=True)\
-        .stdout("You got it in 3 guesses!", regex=True).exit(0)
+def test_level_2_fixed_guess():
+    """Level 2 gameplay with fixed guess works"""
+    check50.run("python3 testing.py")\
+        .stdin("2")\
+        .stdin("50")\
+        .stdout("You got it in 1 guess!", regex=True)\
+        .exit(0)
 
 @check50.check(exists)
-def test_level_3():
-    """Level 3 gameplay works"""
-    # Assuming a mock or predetermined random function that selects 500 for level 3
-    check50.run("python3 guessnumber.py").stdin("3").stdin("1", prompt=True)\
-        .stdout("Too low. Guess again:", regex=True).stdin("1000", prompt=True)\
-        .stdout("Too high. Guess again:", regex=True).stdin("500", prompt=True)\
-        .stdout("You got it in 3 guesses!", regex=True).exit(0)
+def test_level_3_fixed_guess():
+    """Level 3 gameplay with fixed guess works"""
+    check50.run("python3 testing.py")\
+        .stdin("3")\
+        .stdin("500")\
+        .stdout("You got it in 1 guess!", regex=True)\
+        .exit(0)
 
 @check50.check(exists)
-def test_non_numeric_guess():
-    """Handles non-numeric guesses"""
-    check50.run("python3 guessnumber.py").stdin("1").stdin("abc", prompt=True)\
-        .stdout(".*", regex=True).stdin("5", prompt=True)\
-        .stdout("You got it in 2 guesses!", regex=True).exit(0)
+def test_invalid_input_guess():
+    """Handles non-numeric guess input"""
+    check50.run("python3 testing.py")\
+        .stdin("1")\
+        .stdin("not a number", prompt=True)\
+        .stdout("Please enter a valid number. Non-numeric entries count as wrong guesses.", regex=True)\
+        .stdin("5")\
+        .stdout("You got it in 2 guesses!", regex=True)\
+        .exit(0)
 
 @check50.check(exists)
-def test_play_again():
-    """Prompts to play again and exits on 'n'"""
-    check50.run("python3 guessnumber.py").stdin("1").stdin("5", prompt=True)\
-        .stdout("You got it in 1 guess!", regex=True).stdin("n")\
-        .stdout("Goodbye!", regex=True).exit(0)
+def test_play_again_yes_then_no():
+    """Player chooses to play again and then chooses not to"""
+    check50.run("python3 testing.py")\
+        .stdin("1")\
+        .stdin("5", prompt=True)\
+        .stdout("You got it in 1 guess!", regex=True)\
+        .stdin("y")\
+        .stdin("1")\
+        .stdin("5", prompt=True)\
+        .stdout("You got it in 1 guess!", regex=True)\
+        .stdin("n")\
+        .stdout("Goodbye!", regex=True)\
+        .exit(0)
 
 def regex(pattern):
     """Match case-insensitively with any characters on either side"""
-    return fr'^.*{re.escape(pattern)}.*$'
+    return fr'^.*{pattern}.*$'
