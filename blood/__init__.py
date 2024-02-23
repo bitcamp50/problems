@@ -15,7 +15,7 @@ def test_legal_male():
         .stdin("2")\
         .stdin("5")\
         .stdin("2")\
-        .stdout("Your BAC is (.*)\nIt is legal for you to drive.", regex=True)\
+        .stdout("Your BAC is 0.18\nIt is not legal for you to drive.", regex=True)\
         .exit(0)
 
 @check50.check(exists)
@@ -27,7 +27,7 @@ def test_illegal_female():
         .stdin("3")\
         .stdin("5")\
         .stdin("1")\
-        .stdout("Your BAC is (.*)\nIt is not legal for you to drive.", regex=True)\
+        .stdout("Your BAC is 0.35\nIt is not legal for you to drive.", regex=True)\
         .exit(0)
 
 @check50.check(exists)
@@ -45,7 +45,7 @@ def test_non_numeric_input():
         .stdin("two")\
         .reject()\
         .stdin("2")\
-        .stdout("Your BAC is (.*)", regex=True)\
+        .stdout("Your BAC is 0.18", regex=True)\
         .exit(0)
 
 def regex(output):
