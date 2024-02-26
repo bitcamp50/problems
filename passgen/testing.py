@@ -14,7 +14,7 @@ def _fixed_choices(population, k):
     elif population == string.punctuation:
         return ['@', '!']
 
-random.randint = _fixed_choices
+random.choices = _fixed_choices
 
 # Import the game script after overriding randint
 import passgen
