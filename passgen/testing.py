@@ -8,11 +8,11 @@ random.seed(42)
 # Override the randint function to return a fixed value
 def _fixed_choices(population, k):
     if population == string.ascii_letters:
-        return ['a', 'b', 'c']
+        return list("<hbO")
     elif population == string.digits:
-        return ['1', '2']
+        return list("23")
     elif population == string.punctuation:
-        return ['@', '!']
+        return list(":!")
 
 random.choices = _fixed_choices
 
