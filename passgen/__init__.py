@@ -34,7 +34,7 @@ def exists():
 
 @check50.check(exists)
 def test_valid_input():
-    result = "a2@b!1c"
+    result = "<hb2:O3"
     check50.run("python passgen.py").stdin("7").stdin("2").stdin("2").stdout(f"Your password is\n{result}", regex=True).exit()
 
 def regex(pattern):
