@@ -35,8 +35,8 @@ def exists():
 @check50.check(exists)
 def test_valid_input():
     result = f"Your password is\n<hb2:O3"
-    check50.run("python passgen.py").stdin("7").stdin("2").stdin("2").stdout(regex(result), regex=True).exit()
+    check50.run("python passgen.py").stdin("7").stdin("2").stdin("2").stdout(regex(result), regex=True).exit(0)
 
 def regex(pattern):
     """Match case-insensitively with any characters on either side"""
-    return fr'^.*{pattern}.*$'
+    return fr'{pattern}'
