@@ -4,9 +4,9 @@ import string
 
 # Save the original randint function
 _original_choices = random.choices
-fixed_letters = list("<hbO")
+fixed_letters = list("hbO")
 fixed_digits = list("23")
-fixed_punctuation = list(":!")
+fixed_punctuation = list("<:")
 # Override the randint function to return a fixed value
 def _fixed_choices(population, k):
     if population == string.ascii_letters:
