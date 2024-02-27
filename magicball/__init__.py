@@ -25,7 +25,7 @@ def test_invalid_input_question():
             .exit(0)
     else:
         check50.run("python3 magicball.py")\
-            .stdin("Will I be rich and famous?")\
+            .stdin("Will I be rich and famous")\
             .stdout("This is not a question", regex=False)\
             .exit(0)
         
