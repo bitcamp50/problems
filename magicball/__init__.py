@@ -16,17 +16,17 @@ def test_valid_input_question_Y():
 
 @check50.check(exists)
 def test_valid_input_question_N():
-    """Handles question input with '?' character and answer No"""
+    """Handles question input with '?' character and answer Yes"""
     check50.run("python3 testing2.py")\
-        .stdin("Will I be famous?")\
+        .stdin("Will I be rich and famous?")\
         .stdout("No", regex=False)\
         .exit(0)
 
 @check50.check(exists)
 def test_valid_input_question_A():
-    """Handles question input with '?' character and answer Ask again later"""
+    """Handles question input with '?' character and answer Yes"""
     check50.run("python3 testing3.py")\
-        .stdin("Will I be famous?")\
+        .stdin("Will I be rich and famous?")\
         .stdout("Ask again later", regex=False)\
         .exit(0)
     
