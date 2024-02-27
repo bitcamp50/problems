@@ -4,17 +4,17 @@ import string
 
 # Save the original randint function
 _original_choices = random.choices
-fixed_letters = list("hbO")
-fixed_digits = list("23")
-fixed_punctuation = list("<:")
+fixed_letters = list(string.ascii_letters)
+fixed_digits = list(string.digits)
+fixed_punctuation = list(string.punctuation)
 # Override the randint function to return a fixed value
 def _fixed_choices(population, k):
     if population == string.ascii_letters:
-        return fixed_letters[:k]
+        return random.choices(fixed_letters, k=k)
     elif population == string.digits:
-        return fixed_digits[:k]
+        return random.choices(fixed_digits, k=k)
     elif population == string.punctuation:
-        return fixed_punctuation[:k]
+        return random.choices(fixed_punctuation, k=k)
 
 random.choices = _fixed_choices
 
