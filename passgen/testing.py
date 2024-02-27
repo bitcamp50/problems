@@ -19,11 +19,12 @@ _original_choices = random.choices
 
 def mock_choices(population, k):
     if population == string.ascii_letters:
-        return ['O', 'b', 'h'] * (k // 3) + ['h'] * (k % 3)  # Mimicking the behavior of random.choices
+        return ['O', 'b', 'h'] * (k // 3) + ['h'] * (k % 3)  # Fixed characters for letters
     elif population == string.digits:
-        return ['2', '3']
+        return ['2', '3'] * (k // 2)  # Fixed characters for digits
     elif population == string.punctuation:
-        return ['!', ':']
+        return ['!', ':'] * (k // 2)  # Fixed characters for punctuation
+
 
 def mock_shuffle(items):
     return items 
