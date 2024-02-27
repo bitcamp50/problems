@@ -24,5 +24,16 @@ def test_invalid_input_question():
     check.stdin("Will I be rich and famous?\n")
     check.stdout("Yes")
     check.exit(0)
+
+@check50.check(exists)
+def test_invalid_input_question():
+    """Handles question with blank input"""
+    question = "\n"
+    check = check50.run("python3 testing.py")
+    check.stdin(question)
+    check.stdout("This is not a question")
+    check.stdin("Will I be rich and famous?\n")
+    check.stdout("Yes")
+    check.exit(0)
         
 
