@@ -26,3 +26,9 @@ def test_small_input():
     ''' Test With one character inputs.'''
     the_file = check50.run("python3 pickwinner.py")
     the_file.stdin("a").stdin("b").stdin("c").stdin("").stdout(f"The name list is empty", regex=False).exit(0)
+
+@check50.check(exists)
+def test_number_input():
+    ''' Test With number inputs.'''
+    the_file = check50.run("python3 pickwinner.py")
+    the_file.stdin("1").stdin("2").stdin("3").stdin("").stdout(f"The name list is empty", regex=False).exit(0)
