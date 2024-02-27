@@ -5,7 +5,7 @@ import sys
 _original_randint = random.choice
 
 # Override the randint function to return a fixed value
-def _fixed_choice(start, end):
+def _fixed_choice(seq):
     # You can adjust this value based on the testing scenario
     return "Yes"
 
