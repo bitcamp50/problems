@@ -19,13 +19,16 @@ _original_choices = random.choices
 
 def mock_choices(population, k):
     if population == string.ascii_letters:
-        return ['h', 'b', 'O'] * (k // 3) + ['h'] * (k % 3)  # Mimicking the behavior of random.choices
+        return ['O', 'b', 'h'] * (k // 3) + ['h'] * (k % 3)  # Mimicking the behavior of random.choices
     elif population == string.digits:
         return ['2', '3']
     elif population == string.punctuation:
-        return [':', '!']
-random.choices = mock_choices
+        return ['!', ':']
 
+def mock_shuffle(items):
+    return items 
+random.choices = mock_choices
+random.shuffle = mock_shuffle
 # Import the game script after overriding randint
 import passgen
 
