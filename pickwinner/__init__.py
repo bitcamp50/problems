@@ -31,4 +31,4 @@ def test_small_input():
 def test_number_input():
     ''' Test With number inputs.'''
     the_file = check50.run("python3 pickwinner.py")
-    the_file.stdin("1").stdin("2").stdin("3").stdin("").stdout(f"The name list is empty", regex=False).exit(0)
+    the_file.stdin("11").stdin("22").stdin("33").stdin("").stdout(f"The name list is empty", regex=False).exit(0)
