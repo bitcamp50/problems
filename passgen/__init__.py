@@ -35,7 +35,7 @@ def exists():
 @check50.check(exists)
 def test_valid_input():
     
-    result = f"Your password is\nO!b23h:"
+    result = f"Your password is\nObh!:23"
     check50.run("python3 testing.py").stdin("7").stdin("2").stdin("2").stdout(regex(result), regex=True).exit()
 
 def regex(pattern):
