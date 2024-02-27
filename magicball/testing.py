@@ -9,7 +9,7 @@ def _fixed_choice(start, end):
     # You can adjust this value based on the testing scenario
     return "Yes"
 
-random.randint = _fixed_choice
+random.choice = _fixed_choice
 
 # Import the game script after overriding randint
 import magicball
