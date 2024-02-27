@@ -14,3 +14,9 @@ def test_valid_input():
     the_file = check50.run("python3 testing.py")
     
     the_file.stdin(names[0]).stdin(names[1]).stdin(names[2]).stdin('').stdout(f"The winner is... Bob.", regex=False).exit(0)
+
+@check50.check(exists)
+def test_blank_input():
+    ''' Test With No inputs.'''
+    the_file = check50.run("python3 testing.py")
+    the_file.stdin("").stdout(f"The name list is empty", regex=False).exit(0)
