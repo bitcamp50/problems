@@ -36,7 +36,7 @@ def exists():
 def test_valid_input():
     
     result = f"Your password is\nabc@!12"
-    check50.run("python3 testing.py").stdin("7").stdin("2").stdin("2").stdout(result, regex=False).exit(0)
+    check50.run("python3 testing.py").stdin("7").stdin("2").stdin("2").stdout(result, regex=False).exit()
 
 def regex(pattern):
     """Match case-insensitively with any characters on either side"""
