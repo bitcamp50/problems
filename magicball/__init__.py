@@ -5,6 +5,8 @@ def exists():
     """magicball.py exists"""
     check50.exists("magicball.py")
     check50.include("testing.py")
+    check50.include("testing2.py")
+    check50.include("testing3.py")
 
 @check50.check(exists)
 def test_valid_input_question_Y():
