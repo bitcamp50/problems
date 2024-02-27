@@ -24,7 +24,7 @@ def test_invalid_input_question():
             .stdout("Yes", regex=False)\
             .exit(0)
     else:
-        check50.run("python3 testing.py")\
+        check50.run("python3 magicball.py")\
             .stdin("Will I be rich and famous?")\
             .stdout("This is not a question", regex=False)\
             .exit(0)
