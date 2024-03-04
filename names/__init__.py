@@ -25,7 +25,7 @@ def test_valid_months():
     for number, month in months.items():
         (check50.run("python3 names.py")
                 .stdin(number)
-                .stdout(f"The name of the month is {month}\.", regex=True)
+                .stdout(f"The name of the month is {month}", regex=True)
                 .exit(0))
 
 @check50.check(exists)
