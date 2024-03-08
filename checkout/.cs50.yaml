@@ -4,6 +4,7 @@ submit50:
     - !exclude "*"
     - !include "*.py"
     - !require checkout.py
+    - !require test_checkout.py
   style: false
 
 check50:

@@ -1,10 +1,18 @@
 import check50
 
+from re import sub
+
 @check50.check()
 def exists():
     """Test if checkout.py exists."""
     check50.exists("checkout.py")
 
+    check50.include("test_checkout.py")
+
+@check50.check(exists)
+def test_correct():
+    """correct twttr.py passes all test_twttr checks"""
+    test_implementation("correct_test", code=0)
 
 @check50.check(exists)
 def test_subtotal():
@@ -44,3 +52,24 @@ def test_subtotal_3():
         .stdin("2")\
         .stdout("Subtotal: $228.00\nTax: $12.54\nTotal: $240.54", regex=False)\
         .exit(0)
+
+
+
+def test_implementation(filename, code=0):
+    """test an implementation of checkout.py against student's checks in test_checkout.py, expect a given exit status"""
+
+    check50.include(f"{filename}.py")
+
+    patch_file(f"{filename}")
+
+    return check50.run("pytest test_checkout.py").exit(code=code)
+
+def patch_file(import_file):
+    """patch a new version of calculate_total by updating import statement"""
+
+    with open("checkout.py", "r") as f:
+        checkout = sub(f"from \w* import calculate_total", f"from {import_file} import calculate_total", f.read())
+
+    # Write new import statement to checkout.py
+    with open("checkout.py", "w") as f:
+        f.write(checkout)
