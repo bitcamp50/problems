@@ -16,7 +16,7 @@ def test_subtotal():
         .stdin("3")\
         .stdin("4")\
         .stdin("5")\
-        .stdout("Subtotal: $27.00\nTax: $1.49\nTotal: $28.48", regex=True)\
+        .stdout("Subtotal: $27.00\nTax: $1.49\nTotal: $28.48", regex=False)\
         .exit(0)
     
     
