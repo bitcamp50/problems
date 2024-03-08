@@ -18,8 +18,8 @@ def test_subtotal():
         .exit(0)
 
 @check50.check(exists)
-def test_subtotal():
-    """Test if a number is converted correctly."""
+def test_conversion():
+    """Test different inputs for conversion"""
     check50.run("python3 currency.py")\
         .stdin("50")\
         .stdin("1.1")\
@@ -27,8 +27,8 @@ def test_subtotal():
         .exit(0)
     
 @check50.check(exists)
-def test_subtotal():
-    """Test if a number is converted correctly."""
+def test_value_error():
+    """Test for a string as an input"""
     check50.run("python3 currency.py")\
         .stdin("asdf")\
         .exit(1)
