@@ -6,7 +6,7 @@ def exists():
     check50.exists("checkout.py")
 
 
-@check50.check(exists=True)
+@check50.check(exists)
 def test_subtotal():
     """Test if subtotal is calculated correctly."""
     check50.run("python checkout.py", input="25 2 10 1 4 1", capture_output=True)
@@ -15,7 +15,7 @@ def test_subtotal():
     expected_subtotal = "$64.00"
     assert expected_subtotal in output, f"Missing or incorrect subtotal. Expected: {expected_subtotal}"
 
-@check50.check(exists=True)
+@check50.check(exists)
 def test_tax():
     """Test if tax is calculated correctly."""
     check50.run("python checkout.py", input="25 2 10 1 4 1", capture_output=True)
@@ -25,7 +25,7 @@ def test_tax():
     assert expected_tax in output, f"Missing or incorrect tax. Expected: {expected_tax}"
 
 
-@check50.check(exists=True)
+@check50.check(exists)
 def test_total():
     """Test if total is calculated correctly."""
     check50.run("python checkout.py", input="25 2 10 1 4 1", capture_output=True)
@@ -36,7 +36,7 @@ def test_total():
 
 
 
-@check50.check(exists=True)
+@check50.check(exists)
 def test_formatting():
     """Test if output is formatted correctly."""
     check50.run("python checkout.py", input="25 2 10 1 4 1", capture_output=True)
