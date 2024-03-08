@@ -5,9 +5,9 @@ from re import sub
 @check50.check()
 def exists():
     """Test if checkout.py exists."""
-    check50.exists("checkout.py")
+    check50.exists("test_checkout.py")
 
-    check50.include("test_checkout.py")
+    check50.include("checkout.py")
 
 @check50.check(exists)
 def test_correct():
