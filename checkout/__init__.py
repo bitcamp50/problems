@@ -20,7 +20,7 @@ def test_subtotal():
         .exit(0)
 
 @check50.check(exists)
-def test_subtotal():
+def test_subtotal_2():
     """Test if values are calculated correctly 2"""
     check50.run("python3 checkout.py")\
         .stdin("25")\
@@ -33,7 +33,7 @@ def test_subtotal():
         .exit(0)
 
 @check50.check(exists)
-def test_subtotal():
+def test_subtotal_3():
     """Test if values are calculated correctly 3"""
     check50.run("python3 checkout.py")\
         .stdin("16")\
