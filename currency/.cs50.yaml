@@ -3,7 +3,8 @@ submit50:
   files: &submit50_files
     - !exclude "*"
     - !include "*.py"
-    - !require currency_converter.py
+    - !require currency.py
+    - !require test_currency.py
   style: false
 
 check50:
