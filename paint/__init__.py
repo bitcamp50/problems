@@ -23,7 +23,7 @@ def test_investment_values():
     check50.run("python3 paint.py")\
         .stdin("30")\
         .stdin("15")\
-        .stdout("You will need to purchase 2 gallons of\npaint to cover 420 square feet.", regex=False)\
+        .stdout("You will need to purchase 2 gallons of\npaint to cover 450 square feet.", regex=False)\
         .exit(0)
 
 @check50.check(exists)
