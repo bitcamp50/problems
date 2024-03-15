@@ -8,7 +8,7 @@ def exists():
 
 
 @check50.check(exists)
-def test_investment():
+def test_values():
     """Test calculation of the correct values"""
     check50.run("python3 paint.py")\
         .stdin("12")\
@@ -18,7 +18,7 @@ def test_investment():
     
 
 @check50.check(exists)
-def test_investment_values():
+def test_correct_values():
     """Test calculation of the other correct values"""
     check50.run("python3 paint.py")\
         .stdin("30")\

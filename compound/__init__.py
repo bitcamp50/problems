@@ -8,7 +8,7 @@ def exists():
 
 
 @check50.check(exists)
-def test_investment():
+def test_value_calculation():
     """Test calculation of the correct values"""
     check50.run("python3 compound.py")\
         .stdin("1500")\
@@ -19,7 +19,7 @@ def test_investment():
         .exit(0)
 
 @check50.check(exists)
-def test_investment():
+def test_correct_values():
     """Test calculation of the other correct values"""
     check50.run("python3 compound.py")\
         .stdin("2000")\
