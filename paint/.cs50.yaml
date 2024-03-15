@@ -1,0 +1,11 @@
+.cs50.yaml:
+submit50:
+  files: &submit50_files
+    - !exclude "*"
+    - !include "*.py"
+    - !require paint.py
+    - !require test_paint.py
+  style: false
+
+check50:
+  files: *submit50_files
