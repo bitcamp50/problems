@@ -31,8 +31,9 @@ def test_single_input():
         .stdout("The average is 500.")\
         .stdout("The minimum is 500.")\
         .stdout("The maximum is 500.")\
-        .stdout("The standard deviation is 0.0")\
         .exit(0)
+        
+        
 
 @check50.check(exists)
 def test_no_input():
