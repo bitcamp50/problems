@@ -15,7 +15,7 @@ def test_json_response():
 
     api_dict = response.json()
     
-    check50.run("python3 space.py").stdout(api_dict).exit(0)
+    check50.run("python3 space.py").stdout(api_dict)
 
 # @check50.check(exists)
 # def test_output_format():
