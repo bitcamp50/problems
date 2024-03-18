@@ -70,3 +70,16 @@ def test_multiple_errors():
         .stdin("A12-1234")\
         .stdout(".*(not a valid first name|must be filled in|must be numeric|not a valid ID)", regex=True)\
         .exit(0)
+
+@check50.check(exists)
+def test_multiple_errors():
+    """Handles correct input"""
+    check50.run("python3 validating.py")\
+        .stdin("Jimmy")\
+        .stdin("James")\
+        .stdin("55555")\
+        .stdin("TK-4213")\
+        .stdout("There were no errors found.")\
+        .exit(0)
+    
+
