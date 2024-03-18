@@ -14,18 +14,13 @@ def test_json_response():
     response = requests.get(url)
 
     api_dict = response.json()
-    
-    check50.run("python3 space.py").stdout(api_dict)
 
-# @check50.check(exists)
-# def test_output_format():
-#     """space.py prints the correct output format"""
-#     result = check50.run("python3 space.py")#.stdout("{:<20}| {:<20}".format("name", "craft")).stdout("-" * 30)
+    result = check50.run("python3 space.py")
 
-#     # Add more specific checks for names and crafts
-#     result.stdout("Jasmin Moghbeli").stdout("ISS")
-#     result.stdout("Andreas Mogensen").stdout("ISS")
-#     result.stdout("Satoshi Furukawa").stdout("ISS")
-#     # Add more names and crafts as needed
+    # Add more specific checks for names and crafts
+    result.stdout(api_dict["people"][0]["name"]).stdout(api_dict["people"][0]["craft"])
+    result.stdout(api_dict["people"][1]["name"]).stdout(api_dict["people"][0]["craft"])
+    result.stdout(api_dict["people"][2]["name"]).stdout(api_dict["people"][0]["craft"])
+    # Add more names and crafts as needed
 
-#     result.exit(0)
+    result.exit(0)
