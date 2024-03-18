@@ -1,5 +1,5 @@
 import check50
-
+import requests
 @check50.check()
 def exists():
     """space.py exists"""
@@ -8,7 +8,14 @@ def exists():
 @check50.check(exists)
 def test_json_response():
     """space.py makes a successful request and parses JSON response"""
-    check50.run("python3 space.py").stdout("<Response [200]>").exit(0)
+    
+
+    url = "http://api.open-notify.org/astros.json"
+    response = requests.get(url)
+
+    api_dict = response.json()
+    
+    check50.run("python3 space.py").stdout(api_dict).exit(0)
 
 # @check50.check(exists)
 # def test_output_format():
