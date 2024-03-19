@@ -9,7 +9,7 @@ def exists():
 @check50.check(exists)
 def test_json_response():
     """weather.py makes a successful request and parses JSON response"""
-    city = "tbilisi"
+    city = "Tbilisi"
     api_key = "45fca6311fa8a41b61aee922ec47c231"
     base_url = "http://api.openweathermap.org/data/2.5/weather"
     params = {
@@ -22,8 +22,7 @@ def test_json_response():
     weather_data = response.json()
     temperature = weather_data['main']['temp']
     
-    expected_output = f"Temperature in Tbilisi is: {temperature}"
+    expected_output = f"Temperature in {city} is: {temperature}"
     
-    result = check50.run("python3 weather.py").stdin(city)
-    result.stdout(expected_output)
+    result = check50.run("python3 weather.py").stdin(city).stdout(expected_output, regex=False)
     result.exit(0)
