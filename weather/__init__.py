@@ -8,7 +8,6 @@ def exists():
 @check50.check(exists)
 def test_json_response():
     """weather.py makes a successful request and parses JSON response"""
-    import requests
     city = "tbilisi"
     api_key = "45fca6311fa8a41b61aee922ec47c231"
     base_url = "http://api.openweathermap.org/data/2.5/weather"
