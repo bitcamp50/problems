@@ -23,4 +23,4 @@ def test_json_response():
 
     result = check50.run("python3 space.py").stdin("tbilisi")
     result.stdout("Temperature in Tbilisi is:", temperature)
-    # result.exit(0)
+    result.exit(0)
