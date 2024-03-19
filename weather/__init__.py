@@ -1,5 +1,6 @@
 import check50
 import requests
+
 @check50.check()
 def exists():
     """weather.py exists"""
@@ -8,7 +9,6 @@ def exists():
 @check50.check(exists)
 def test_json_response():
     """weather.py makes a successful request and parses JSON response"""
-    result = check50.run("python3 weather.py").stdin("tbilisi")
     city = "tbilisi"
     api_key = "45fca6311fa8a41b61aee922ec47c231"
     base_url = "http://api.openweathermap.org/data/2.5/weather"
@@ -21,7 +21,9 @@ def test_json_response():
     response = requests.get(base_url, params=params)
     weather_data = response.json()
     temperature = weather_data['main']['temp']
-
     
-    result.stdout("Temperature in Tbilisi is:", temperature)
+    expected_output = f"Temperature in Tbilisi is: {temperature}"
+    
+    result = check50.run("python3 weather.py").stdin(city)
+    result.stdout(expected_output)
     result.exit(0)
