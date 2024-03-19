@@ -1,3 +1,4 @@
+
 import check50
 import requests
 
@@ -24,5 +25,6 @@ def test_json_response():
     
     expected_output = f"Temperature in {city} is: {temperature}"
     
-    result = check50.run("python3 weather.py").stdin(city).stdout(expected_output, regex=False)
+    result = check50.run("python3 weather.py")
+    result.stdout(expected_output, regex=False)
     result.exit(0)
