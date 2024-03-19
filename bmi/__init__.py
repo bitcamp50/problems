@@ -9,8 +9,8 @@ def exists():
 def test_normal_weight():
     """correctly calculates BMI and identifies normal weight"""
     (check50.run("python3 bmi.py")
-            .stdin("150")
             .stdin("68")
+            .stdin("150")
             .stdout("Your BMI is 22.8.\nYou are within the ideal weight range.", regex=False)
             .exit(0))
 
@@ -18,8 +18,8 @@ def test_normal_weight():
 def test_underweight():
     """correctly calculates BMI and identifies underweight"""
     (check50.run("python3 bmi.py")
-            .stdin("100")
             .stdin("68")
+            .stdin("100")
             .stdout("Your BMI is 15.2.\nYou are underweight. You should see your doctor.", regex=False)
             .exit(0))
 
@@ -27,8 +27,8 @@ def test_underweight():
 def test_overweight():
     """correctly calculates BMI and identifies overweight"""
     (check50.run("python3 bmi.py")
-            .stdin("200")
             .stdin("68")
+            .stdin("200")
             .stdout("Your BMI is 30.4.\nYou are overweight. You should see your doctor.", regex=False)
             .exit(0))
 
