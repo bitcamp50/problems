@@ -9,7 +9,6 @@ def exists():
 def test_sorted_output():
     """namesorter.py creates correctly sorted output"""
     check50.run("python3 namesorter.py").exit(1)
-    check50.exists("input_names.txt")
     correct_output = ["Total of 7 names", "-----------------", "Johnson, Jim", "Jones, Aaron", "Jones, Chris", "Ling, Mai", "Swift, Geoffrey", "Xiong, Fong", "Zarnecki, Sabrina"]
     output = check50.read("sorted_names.txt").strip().split("\n")
     if output != correct_output:
