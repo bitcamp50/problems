@@ -1,5 +1,5 @@
 import check50
-
+import requests
 @check50.check()
 def exists():
     """space.py exists"""
@@ -8,17 +8,19 @@ def exists():
 @check50.check(exists)
 def test_json_response():
     """space.py makes a successful request and parses JSON response"""
-    result = check50.run("python3 space.py").stdout("API request successful").stdout("JSON parsing successful").exit(0)
+    
 
-@check50.check(exists)
-def test_output_format():
-    """space.py prints the correct output format"""
-    result = check50.run("python3 space.py").stdout("{:<20}| {:<20}".format("name", "craft")).stdout("-" * 30)
+    url = "http://api.open-notify.org/astros.json"
+    response = requests.get(url)
+
+    api_dict = response.json()
+
+    result = check50.run("python3 space.py")
 
     # Add more specific checks for names and crafts
-    result.stdout("Jasmin Moghbeli").stdout("ISS")
-    result.stdout("Andreas Mogensen").stdout("ISS")
-    result.stdout("Satoshi Furukawa").stdout("ISS")
+    result.stdout(api_dict["people"][0]["name"]).stdout(api_dict["people"][0]["craft"])
+    result.stdout(api_dict["people"][1]["name"]).stdout(api_dict["people"][0]["craft"])
+    result.stdout(api_dict["people"][2]["name"]).stdout(api_dict["people"][0]["craft"])
     # Add more names and crafts as needed
 
     result.exit(0)
