@@ -10,9 +10,10 @@ def test_sorted_output():
     """namesorter.py creates correctly sorted output"""
     check50.run("python3 namesorter.py").exit(1)
     correct_output = ["Total of 7 names", "-----------------", "Johnson, Jim", "Jones, Aaron", "Jones, Chris", "Ling, Mai", "Swift, Geoffrey", "Xiong, Fong", "Zarnecki, Sabrina"]
-    output = check50.read("sorted_names.txt").strip().split("\n")
-    if output != correct_output:
-        raise check50.Failure(f"Expected sorted_names.txt to contain sorted names with correct format but got {output}.")
+    with open("sorted_names.txt", "r") as file:
+        lines = file.readlines()
+    if lines != correct_output:
+        raise check50.Failure(f"Expected sorted_names.txt to contain sorted names with correct format but got {lines}.")
 
 @check50.check(exists)
 def test_correct_total_count():
